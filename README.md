@@ -1,6 +1,6 @@
 # Guvnor
 
-A utility for managing Cosmos on-chain governance proposals.
+Tools for managing Cosmos on-chain governance proposals.
 
 Currently `guvnor` supports converting a chains' governance proposals into an RSS feed.
 
