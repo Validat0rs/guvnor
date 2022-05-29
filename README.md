@@ -17,7 +17,6 @@ Before running the `guvnor` service, please ensure that you have the following e
 |Var|Description|
 |---|-----------|
 |`GUVNOR_PORT`|The port that the service should run on (e.g.: `3000`)|
-|`GUVNOR_CSRF_TOKEN`|A randomly generated string to be used as the CSRF token.|
 |`GUVNOR_CONFIG`|The full path to the `config.toml` file.|
 |`GUVNOR_DOMAIN`|The domain that the service is being run on.|
 |`REDIS_URL`|The Redis URL (e.g.: `localhost:6379`).|

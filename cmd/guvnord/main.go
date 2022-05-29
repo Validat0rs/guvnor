@@ -11,7 +11,6 @@ import (
 
 var requiredEnv = []string{
 	"GUVNOR_PORT",
-	"GUVNOR_CSRF_TOKEN",
 	"GUVNOR_CONFIG",
 	"GUVNOR_DOMAIN",
 	"REDIS_URL",
@@ -26,7 +25,7 @@ func main() {
 
 	_feed := feed.NewFeed()
 	_feed.SetHandlers()
-	_feed.Start(true)
+	_feed.Start()
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)

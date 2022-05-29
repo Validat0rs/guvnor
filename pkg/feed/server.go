@@ -9,7 +9,6 @@ import (
 	"github.com/Validat0rs/guvnor/pkg/feed/types"
 
 	"github.com/go-redis/redis/v8"
-	"github.com/gorilla/csrf"
 	"github.com/gorilla/mux"
 	"github.com/rs/zerolog/log"
 )
@@ -38,20 +37,12 @@ func NewFeed() *Feed {
 	}
 }
 
-func (f *Feed) Start(withCSRF bool) {
+func (f *Feed) Start() {
 	f.Monitoring.Logger.Info().Msgf("guvnor feed service starting on %v....", ":"+os.Getenv("GUVNOR_PORT"))
 	f.HTTP.Router.Use()
-
-	var handler http.Handler
-	if withCSRF {
-		handler = csrf.Protect([]byte(os.Getenv("GUVNOR_CSRF_TOKEN")), csrf.Secure(f.Secure))(f.HTTP.Router)
-	} else {
-		handler = f.HTTP.Router
-	}
-
 	f.HTTP.Server = &http.Server{
 		Addr:         ":" + os.Getenv("GUVNOR_PORT"),
-		Handler:      handler,
+		Handler:      f.HTTP.Router,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
 		IdleTimeout:  15 * time.Second,
