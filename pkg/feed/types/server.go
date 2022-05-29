@@ -8,6 +8,10 @@ import (
 	"github.com/rs/zerolog"
 )
 
+type Health struct {
+	Status string `json:"status"`
+}
+
 type HTTP struct {
 	Router *mux.Router
 	Server *http.Server
