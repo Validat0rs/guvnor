@@ -26,8 +26,8 @@ docker-redis:
 
 setup-config:
 	@mkdir -p ~/.guvnor/config
-	@cp config.toml.example $HOME/.guvnor/config/config.toml
-	@export GUVNOR_CONFIG=$HOME/.guvnor/config/config.toml
+	@cp config.toml.example ${HOME}/.guvnor/config/config.toml
+	@export GUVNOR_CONFIG=${HOME}/.guvnor/config/config.toml
 
 run-guvnor-service:
 	@guvnord
