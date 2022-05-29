@@ -1,0 +1,3 @@
+[[chain]]
+chain_id = "juno-1"
+api = "https://api-juno.url"
