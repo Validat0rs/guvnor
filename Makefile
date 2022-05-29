@@ -13,10 +13,10 @@ lint-verbose: lint-pre
 	@golangci-lint run -v --timeout=5m
 
 install: go.sum
-	GO111MODULE=on go install -v ./cmd/feed
+	GO111MODULE=on go install -v ./cmd/guvnord
 
 clean:
-	rm -f ${GOBIN}/{feed}
+	rm -f ${GOBIN}/{guvnord}
 
 tests:
 	@go test -v -coverprofile .testCoverage.txt ./...
@@ -29,5 +29,5 @@ setup-config:
 	@cp config.toml.example $HOME/.guvnor/config/config.toml
 	@export GUVNOR_CONFIG=$HOME/.guvnor/config/config.toml
 
-run-feed-service:
-	@feed
+run-guvnor-service:
+	@guvnord

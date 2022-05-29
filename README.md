@@ -12,7 +12,7 @@ If you are new to Golang, please follow the setup instructions [here](https://go
 
 ### Environment
 
-Before running the `guvnor` feed service, please ensure that you have the following environment variables set:
+Before running the `guvnor` service, please ensure that you have the following environment variables set:
 
 |Var|Description|
 |---|-----------|
@@ -51,9 +51,9 @@ api = "<api_host>"
 
 ## Run
 
-You can run the `guvnor` feed service on any cloud or bare metal provider. A Heroku `Procfile` (please see [here](https://devcenter.heroku.com/articles/getting-started-with-go) for how to launch this on Heroku) as also been included.
+You can run the `guvnor` service on any cloud or bare metal provider. A Heroku `Procfile` (please see [here](https://devcenter.heroku.com/articles/getting-started-with-go) for how to launch this on Heroku) as also been included.
 
-Please ensure that you have a Redis instance available, as the `guvnor` feed service makes use of Redis to cache requests (for up to 6 hours).
+Please ensure that you have a Redis instance available, as the `guvnor` service makes use of Redis to cache requests (for up to 6 hours).
 
 ### Install
 
@@ -65,10 +65,10 @@ make clean install
 
 ### Start
 
-To then to start the feed service:
+To then to start the service:
 
 ```console
-make run-feed-service
+make run-guvnor-service
 ```
 
 Once running, you may access the feed at `<hostname>/<chain_id>/proposals/rss`.
