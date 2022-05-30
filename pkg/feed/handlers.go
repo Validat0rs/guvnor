@@ -14,10 +14,7 @@ import (
 
 func (f *Feed) SetHandlers() {
 	f.proposalsHandler()
-
-	f.HTTP.Router.Handle("/status", negroni.New(
-		negroni.Wrap(http.HandlerFunc(f.healthCheck)),
-	))
+	f.statusHandler()
 }
 
 func (f *Feed) proposalsHandler() {
@@ -32,6 +29,12 @@ func (f *Feed) proposalsHandler() {
 			negroni.Wrap(http.HandlerFunc(_proposals.Rss)),
 		))
 	}
+}
+
+func (f *Feed) statusHandler() {
+	f.HTTP.Router.Handle("/status", negroni.New(
+		negroni.Wrap(http.HandlerFunc(f.healthCheck)),
+	))
 }
 
 func (f *Feed) healthCheck(w http.ResponseWriter, r *http.Request) {
