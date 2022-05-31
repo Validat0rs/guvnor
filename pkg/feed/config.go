@@ -2,7 +2,9 @@ package feed
 
 import (
 	"github.com/BurntSushi/toml"
+
 	"github.com/Validat0rs/guvnor/pkg/feed/types"
+
 	"io/ioutil"
 )
 
