@@ -15,7 +15,7 @@ import (
 var (
 	feed = &feeds.Feed{
 		Link: &feeds.Link{
-			Href: "https://github.com/Validat0rs/guvnor",
+			Href: "",
 		},
 		Description: "Proposals",
 		Author: &feeds.Author{
@@ -45,8 +45,9 @@ func (p *Proposals) getRawFeed() (*[]byte, error) {
 	return &body, nil
 }
 
-func (p *Proposals) rawFeedToRss(list types.List) (*string, error) {
+func (p *Proposals) rawFeedToRss(url string, list types.List) (*string, error) {
 	feed.Title = p.chainId
+	feed.Link.Href = url
 
 	var feedItems []*feeds.Item
 	for _, item := range list.Proposals {

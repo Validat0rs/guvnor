@@ -27,7 +27,7 @@ func (p *Proposals) Rss(w http.ResponseWriter, r *http.Request) {
 	feed = p.getCache()
 
 	if *feed == "" {
-		feed, err = p.rawFeedToRss(list)
+		feed, err = p.rawFeedToRss(r.URL.String(), list)
 		if err != nil {
 			p.logger.Error().Msgf("%v", err)
 			w.WriteHeader(http.StatusInternalServerError)
