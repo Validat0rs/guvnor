@@ -55,9 +55,7 @@ func (p *Proposals) rawFeedToRss(url string, list types.List) (*string, error) {
 			&feeds.Item{
 				Id:    item.ProposalID,
 				Title: item.Content.Title,
-				Link: &feeds.Link{
-					Href: fmt.Sprintf("%s/%s", proposalsUri, item.ProposalID),
-				},
+				Link: &feeds.Link{},
 				Description: item.Content.Description,
 				Created:     item.SubmitTime,
 			})
