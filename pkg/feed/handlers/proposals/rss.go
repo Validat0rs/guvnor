@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/Validat0rs/guvnor/pkg/feed/handlers/proposals/types"
 )
@@ -28,7 +29,7 @@ func (p *Proposals) Rss(w http.ResponseWriter, r *http.Request) {
 	feed = p.getCache()
 
 	if *feed == "" {
-		feed, err = p.rawFeedToRss(fmt.Sprintf("%s://%s%s", r.URL.Scheme, r.Host, r.URL.String()), list)
+		feed, err = p.rawFeedToRss(fmt.Sprintf("//%s%s", os.Getenv("GUVNOR_DOMAIN"), r.URL.String()), list)
 		if err != nil {
 			p.logger.Error().Msgf("%v", err)
 			w.WriteHeader(http.StatusInternalServerError)
