@@ -5,14 +5,14 @@ import (
 	"time"
 )
 
-func (p *Proposals) getCache() *string {
-	feed, _ := p.redisClient.Get(context.TODO(), p.chainId).Result()
+func (p *Proposals) getCache(cacheKey string) *string {
+	feed, _ := p.redisClient.Get(context.TODO(), cacheKey).Result()
 
 	return &feed
 }
 
-func (p *Proposals) setCache(feed string) error {
-	_, err := p.redisClient.Set(context.TODO(), p.chainId, feed, 6*time.Hour).Result()
+func (p *Proposals) setCache(cacheKey, feed string) error {
+	_, err := p.redisClient.Set(context.TODO(), cacheKey, feed, 6*time.Hour).Result()
 	if err != nil {
 		return err
 	}

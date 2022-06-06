@@ -87,7 +87,7 @@ func (s *rssSuite) SetUpSuite(c *C) {
 	httpServer := httptest.NewServer(handlerFunc)
 
 	redisClient, mock := redismock.NewClientMock()
-	mock.Regexp().ExpectSet(chainId, `[a-z]+`, 6*time.Hour).SetVal("OK")
+	mock.Regexp().ExpectSet(`[a-z]+`, `[a-z]+`, 6*time.Hour).SetVal("OK")
 
 	s.proposal = NewProposals(chainId,
 		fmt.Sprintf("http://%s", httpServer.Listener.Addr().String()),

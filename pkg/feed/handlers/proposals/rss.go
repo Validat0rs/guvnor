@@ -24,11 +24,13 @@ func (p *Proposals) Rss(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	cacheKey := fmt.Sprintf("%s:%s", r.Host, p.chainId)
+
 	var feed *string
-	feed = p.getCache()
+	feed = p.getCache(cacheKey)
 
 	if *feed == "" {
-		feed, err = p.rawFeedToRss(fmt.Sprintf("https://%s%s", r.Host, r.URL.String()), list)
+		feed, err = p.rawFeedToRss(cacheKey, fmt.Sprintf("https://%s%s", r.Host, r.URL.String()), list)
 		if err != nil {
 			p.logger.Error().Msgf("%v", err)
 			w.WriteHeader(http.StatusInternalServerError)

@@ -45,7 +45,7 @@ func (p *Proposals) getRawFeed() (*[]byte, error) {
 	return &body, nil
 }
 
-func (p *Proposals) rawFeedToRss(url string, list types.List) (*string, error) {
+func (p *Proposals) rawFeedToRss(cacheKey, url string, list types.List) (*string, error) {
 	feed.Title = p.chainId
 	feed.Link.Href = url
 
@@ -67,7 +67,7 @@ func (p *Proposals) rawFeedToRss(url string, list types.List) (*string, error) {
 		return nil, err
 	}
 
-	if err := p.setCache(rss); err != nil {
+	if err := p.setCache(cacheKey, rss); err != nil {
 		return nil, err
 	}
 
