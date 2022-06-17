@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/Validat0rs/guvnor/pkg/feed/handlers/proposals/types"
+	"github.com/Validat0rs/guvnor/pkg/guvnor/handlers/proposals/types"
 
 	"github.com/gorilla/feeds"
 )

@@ -1,8 +1,6 @@
 # Guvnor
 
-Tools for managing Cosmos on-chain governance proposals.
-
-Currently `guvnor` supports converting a chains' governance proposals into an RSS feed.
+Convert Cosmos on-chain governance proposals into an RSS feed. 
 
 ## Setup
 

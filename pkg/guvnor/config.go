@@ -1,9 +1,9 @@
-package feed
+package guvnor
 
 import (
 	"github.com/BurntSushi/toml"
 
-	"github.com/Validat0rs/guvnor/pkg/feed/types"
+	"github.com/Validat0rs/guvnor/pkg/guvnor/types"
 
 	"io/ioutil"
 )
@@ -16,7 +16,7 @@ type Reader struct {
 	fileName string
 }
 
-func (f *Feed) ParseConfig(reader IReader) (*types.Config, error) {
+func (g *Guvnor) ParseConfig(reader IReader) (*types.Config, error) {
 	var config types.Config
 
 	body, err := reader.readFile()

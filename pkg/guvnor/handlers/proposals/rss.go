@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Validat0rs/guvnor/pkg/feed/handlers/proposals/types"
+	"github.com/Validat0rs/guvnor/pkg/guvnor/handlers/proposals/types"
 )
 
 func (p *Proposals) Rss(w http.ResponseWriter, r *http.Request) {

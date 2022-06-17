@@ -1,4 +1,4 @@
-package feed
+package guvnor
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/Validat0rs/guvnor/pkg/feed/types"
+	"github.com/Validat0rs/guvnor/pkg/guvnor/types"
 
 	"github.com/go-redis/redis/v8"
 	"github.com/gorilla/mux"
@@ -14,11 +14,11 @@ import (
 )
 
 type (
-	Feed types.Feed
+	Guvnor types.Guvnor
 )
 
-func NewFeed() *Feed {
-	return &Feed{
+func NewGuvnor() *Guvnor {
+	return &Guvnor{
 		Secure: false,
 		HTTP: types.HTTP{
 			Router: mux.NewRouter(),
@@ -37,31 +37,31 @@ func NewFeed() *Feed {
 	}
 }
 
-func (f *Feed) Start() {
-	f.Monitoring.Logger.Info().Msgf("guvnor feed service starting on %v....", ":"+os.Getenv("GUVNOR_PORT"))
-	f.HTTP.Router.Use()
-	f.HTTP.Server = &http.Server{
+func (g *Guvnor) Start() {
+	g.Monitoring.Logger.Info().Msgf("guvnor starting on %v....", ":"+os.Getenv("GUVNOR_PORT"))
+	g.HTTP.Router.Use()
+	g.HTTP.Server = &http.Server{
 		Addr:         ":" + os.Getenv("GUVNOR_PORT"),
-		Handler:      f.HTTP.Router,
+		Handler:      g.HTTP.Router,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
 		IdleTimeout:  15 * time.Second,
 	}
 
 	go func() {
-		if err := f.HTTP.Server.ListenAndServe(); err != nil {
-			f.Monitoring.Logger.Info().Err(err)
+		if err := g.HTTP.Server.ListenAndServe(); err != nil {
+			g.Monitoring.Logger.Info().Err(err)
 		}
 	}()
 }
 
-func (f *Feed) Stop() {
+func (g *Guvnor) Stop() {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	if err := f.HTTP.Server.Shutdown(ctx); err != nil {
-		f.Monitoring.Logger.Fatal().Err(err).Msg("guvnor shutdown")
+	if err := g.HTTP.Server.Shutdown(ctx); err != nil {
+		g.Monitoring.Logger.Fatal().Err(err).Msg("guvnor shutdown")
 	}
 
-	f.Monitoring.Logger.Info().Msg("guvnor exiting....")
+	g.Monitoring.Logger.Info().Msg("guvnor exiting....")
 }

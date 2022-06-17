@@ -1,4 +1,4 @@
-package feed
+package guvnor
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 )
 
 type configSuite struct {
-	feed  *Feed
+	guvnor  *Guvnor
 	faker faker.Faker
 }
 
@@ -26,12 +26,12 @@ var (
 func Test(t *testing.T) { TestingT(t) }
 
 func (s *configSuite) SetUpSuite(c *C) {
-	s.feed = &Feed{}
+	s.guvnor = &Guvnor{}
 	s.faker = faker.New()
 }
 
 func (s *configSuite) TestParseConfig(c *C) {
-	config, err := s.feed.ParseConfig(&readerTest{fileName: s.faker.File().FilenameWithExtension()})
+	config, err := s.guvnor.ParseConfig(&readerTest{fileName: s.faker.File().FilenameWithExtension()})
 	if err != nil {
 		c.Error(err)
 	}

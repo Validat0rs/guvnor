@@ -26,7 +26,7 @@ type Monitoring struct {
 	Logger zerolog.Logger
 }
 
-type Feed struct {
+type Guvnor struct {
 	Secure     bool
 	HTTP       HTTP
 	Cache      Cache

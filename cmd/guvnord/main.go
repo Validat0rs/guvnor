@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/Validat0rs/guvnor/pkg/feed"
+	"github.com/Validat0rs/guvnor/pkg/guvnor"
 )
 
 var requiredEnv = []string{
@@ -23,14 +23,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	_feed := feed.NewFeed()
-	_feed.SetHandlers()
-	_feed.Start()
+	_guvnor := guvnor.NewGuvnor()
+	_guvnor.SetHandlers()
+	_guvnor.Start()
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
-	_feed.Stop()
+	_guvnor.Stop()
 }
 
 func checkEnv() error {
