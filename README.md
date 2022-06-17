@@ -48,7 +48,7 @@ api = "<api_host>"
 
 ## Run
 
-You can run `guvnor` on any cloud or bare metal provider. A Heroku `Procfile` (please see [here](https://devcenter.heroku.com/articles/getting-started-with-go) for how to launch this on Heroku) as also been included.
+You can run `guvnord` on any cloud or bare metal provider. A Heroku `Procfile` (please see [here](https://devcenter.heroku.com/articles/getting-started-with-go) for how to launch this on Heroku) as also been included.
 
 Please ensure that you have a Redis instance available, as `guvnor` makes use of Redis to cache requests (for up to 6 hours).
 
