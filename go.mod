@@ -1,6 +1,6 @@
 module github.com/Validat0rs/guvnor
 
-go 1.17
+go 1.19
 
 replace github.com/Validat0rs/guvnor => ./
 

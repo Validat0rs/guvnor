@@ -23,14 +23,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	_guvnor := guvnor.NewGuvnor()
-	_guvnor.SetHandlers()
-	_guvnor.Start()
+	g := guvnor.NewGuvnor()
+	g.SetHandlers()
+	g.Start()
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
-	_guvnor.Stop()
+	g.Stop()
 }
 
 func checkEnv() error {
