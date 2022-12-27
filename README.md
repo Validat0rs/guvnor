@@ -10,17 +10,17 @@ If you are new to Golang, please follow the setup instructions [here](https://go
 
 ### Environment
 
-Before running `guvnor`, please ensure that you have the following environment variables set:
+Before running `guvnord`, please ensure that you have the following environment variables set:
 
-|Var|Description|
-|---|-----------|
-|`GUVNOR_PORT`|The port that `guvnor` should run on (e.g.: `3000`)|
-|`GUVNOR_CONFIG`|The full path to the `config.toml` file.|
-|`GUVNOR_DOMAIN`|The domain that `guvnor` is being run on.|
-|`REDIS_URL`|The Redis URL (e.g.: `localhost:6379`).|
-|`REDIS_PASSWORD`|The Redis password (leave blank if no password is set).|
-|`PROPOSAL_FEED_AUTHOR`|The name of the author, for the feed.|
-|`PROPOSAL_FEED_EMAIL`|The email address of the author, for the feed.|
+|                        | Description                                             |
+|------------------------|---------------------------------------------------------|
+| `GUVNOR_PORT`          | The port that `guvnor` should run on (e.g.: `3000`)     |
+| `GUVNOR_CONFIG`        | The full path to the `config.toml` file.                |
+| `GUVNOR_DOMAIN`        | The domain that `guvnor` is being run on.               |
+| `REDIS_URL`            | The Redis URL (e.g.: `localhost:6379`).                 |
+| `REDIS_PASSWORD`       | The Redis password (leave blank if no password is set). |
+| `PROPOSAL_FEED_AUTHOR` | The name of the author, for the feed.                   |
+| `PROPOSAL_FEED_EMAIL`  | The email address of the author, for the feed.          |
 
 ## Config
 

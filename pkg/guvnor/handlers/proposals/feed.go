@@ -2,7 +2,7 @@ package proposals
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"time"
@@ -37,7 +37,7 @@ func (p *Proposals) getRawFeed() (*[]byte, error) {
 		return nil, err
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -53,9 +53,9 @@ func (p *Proposals) rawFeedToRss(cacheKey, url string, list types.List) (*string
 	for _, item := range list.Proposals {
 		feedItems = append(feedItems,
 			&feeds.Item{
-				Id:    item.ProposalID,
-				Title: item.Content.Title,
-				Link: &feeds.Link{},
+				Id:          item.ProposalID,
+				Title:       item.Content.Title,
+				Link:        &feeds.Link{},
 				Description: item.Content.Description,
 				Created:     item.SubmitTime,
 			})

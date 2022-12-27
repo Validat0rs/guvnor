@@ -1,11 +1,11 @@
 package guvnor
 
 import (
+	"os"
+
 	"github.com/BurntSushi/toml"
 
 	"github.com/Validat0rs/guvnor/pkg/guvnor/types"
-
-	"io/ioutil"
 )
 
 type IReader interface {
@@ -32,7 +32,7 @@ func (g *Guvnor) ParseConfig(reader IReader) (*types.Config, error) {
 }
 
 func (r *Reader) readFile() ([]byte, error) {
-	file, err := ioutil.ReadFile(r.fileName)
+	file, err := os.ReadFile(r.fileName)
 
 	if err != nil {
 		return nil, err

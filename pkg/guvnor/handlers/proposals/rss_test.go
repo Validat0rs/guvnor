@@ -5,7 +5,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	. "gopkg.in/check.v1"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -105,7 +105,7 @@ func (s *rssSuite) TestRss(c *C) {
 	res := w.Result()
 	defer res.Body.Close()
 
-	rss, err := ioutil.ReadAll(res.Body)
+	rss, err := io.ReadAll(res.Body)
 	if err != nil {
 		c.Error(err)
 	}
